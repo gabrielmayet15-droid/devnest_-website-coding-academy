@@ -1,0 +1,6 @@
+{
+  "name": "DevNest: Website Coding Academy",
+  "description": "Learn website creation with live Google Meet classes, ranked leagues, collaborative real-time student chat, Gemini AI coding tutor, and interactive playgrounds.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

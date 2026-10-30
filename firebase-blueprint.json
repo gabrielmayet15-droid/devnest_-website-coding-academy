@@ -1,0 +1,60 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User account profile and learning progress",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "maxLength": 128 },
+        "name": { "type": "string", "maxLength": 100 },
+        "username": { "type": "string", "maxLength": 50 },
+        "email": { "type": "string", "maxLength": 200 },
+        "avatar": { "type": "string", "maxLength": 10 },
+        "avatarBg": { "type": "string", "maxLength": 100 },
+        "title": { "type": "string", "maxLength": 100 },
+        "bio": { "type": "string", "maxLength": 500 },
+        "statusMessage": { "type": "string", "maxLength": 200 },
+        "themeAura": { "type": "string", "maxLength": 50 },
+        "xp": { "type": "number" },
+        "streakDays": { "type": "number" },
+        "lastActive": { "type": "string", "maxLength": 100 },
+        "role": { "type": "string", "enum": ["student", "admin"] },
+        "pinnedBadgeIds": { "type": "array" },
+        "completedLessonIds": { "type": "array" },
+        "registeredMeetSessionIds": { "type": "array" },
+        "createdProjectCount": { "type": "number" },
+        "createdAt": { "type": "string", "maxLength": 100 }
+      },
+      "required": ["uid", "name", "email", "xp", "role"]
+    },
+    "ChatMessage": {
+      "title": "ChatMessage",
+      "description": "Real-time chat message sent by students in collab rooms",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "senderId": { "type": "string", "maxLength": 128 },
+        "senderName": { "type": "string", "maxLength": 100 },
+        "senderAvatar": { "type": "string", "maxLength": 10 },
+        "senderLeagueId": { "type": "string", "maxLength": 50 },
+        "senderTitle": { "type": "string", "maxLength": 100 },
+        "channelId": { "type": "string", "maxLength": 50 },
+        "text": { "type": "string", "maxLength": 2000 },
+        "codeSnippet": { "type": "object" },
+        "timestamp": { "type": "string", "maxLength": 100 },
+        "reactions": { "type": "array" }
+      },
+      "required": ["senderId", "senderName", "channelId", "text", "timestamp"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "User profile records containing account data and learning progress"
+    },
+    "/chat_messages/{messageId}": {
+      "schema": "ChatMessage",
+      "description": "Real-time student collaboration messages and code snippets"
+    }
+  }
+}
